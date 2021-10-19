@@ -7,5 +7,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "GoogleAuthButton"
-include ':app'
 include ':googleauthbutton'

@@ -220,7 +220,6 @@ public class ColorButtonStroke extends SurfaceView implements SurfaceHolder.Call
   }
 
   private void updateStartCords() {
-
     if (strokeStartX == rect.left) {
       // начало слева
       strokeStartY -= speed;

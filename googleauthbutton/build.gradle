@@ -1,5 +1,42 @@
 plugins {
     id 'com.android.library'
+    id 'com.jfrog.bintray'
+}
+
+//publish {
+//    groupId = 'com.github.it-stonks'
+//    artifactId = 'googleauthbutton'
+//    publishVersion = '0.0.1'
+//    desc = 'Stylish Google Auth Button'
+//    licences = ['Apache-2.0']
+//    uploadName='GoogleAuthButton'
+//    website = 'https://github.com/it-stonks/googleauthbutton.git'
+//}
+
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+
+    configurations = ['archives']
+    pkg {
+        repo = 'maven'
+        name = 'googleauthbutton'
+        vcsUrl = 'https://github.com/it-stonks/googleauthbutton.git'
+        licenses = ['Apache-2.0']
+        userOrg = 'it-stonks'
+
+        version {
+            name = '0.0.1'
+            desc = 'Stylish Google Auth Button'
+            released  = new Date()
+            vcsTag = 'v1.0.0'
+            attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']
+        }
+    }
 }
 
 android {
@@ -22,8 +59,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
 
     buildFeatures {
